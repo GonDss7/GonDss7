@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Gonzalo Dalmasso Müller · Data & Business Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #021859;
+  --night:  #011140;
+  --teal:   #023059;
+  --slate:  #5D768C;
+  --cream:  #F2EFE9;
+  --green:  #1A9E70;
+  --amber:  #B87200;
+  --blue:   #2E75B6;
+  --red:    #C0392B;
+  --white:  #FFFFFF;
+  --bg:     #F0EEE9;
+  --card:   #FAFAF8;
+  --text:   #0D1117;
+  --muted:  #5D6B7A;
+  --border: rgba(2,24,89,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+.header {
+  background: var(--night);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--white);
+}
+.logo span {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--slate);
+  letter-spacing: 0.04em;
+  margin-left: 10px;
+}
+.header-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.header-links a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color .2s;
+  letter-spacing: 0.03em;
+}
+.header-links a:hover { color: rgba(255,255,255,0.9); }
+
+/* ── HERO ────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--night);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(2,48,89,0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(26,158,112,0.15);
+  border: 1px solid rgba(26,158,112,0.3);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--slate);
+}
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all .2s;
+}
+.btn-primary:hover { background: var(--teal); }
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all .2s;
+}
+.btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+
+/* ── STATS BAR ───────────────────────────────────────────────────── */
+.stats-bar {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat {
+  padding: 20px 24px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: -0.02em;
+}
+.stat-l {
+  font-size: 10.5px;
+  color: var(--slate);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* ── MAIN ────────────────────────────────────────────────────────── */
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--slate);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── PROJECT CARDS ───────────────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 5rem;
+}
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(2,24,89,0.12);
+  border-color: rgba(2,24,89,0.16);
+}
+.card-header {
+  padding: 20px 20px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.badge {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.badge-green { background: rgba(26,158,112,0.12); color: var(--green); }
+.badge-blue  { background: rgba(46,117,182,0.12); color: var(--blue); }
+.badge-amber { background: rgba(184,114,0,0.12);  color: var(--amber); }
+.badge-navy  { background: rgba(2,24,89,0.08);    color: var(--navy); }
+
+.card-body {
+  padding: 14px 20px 0;
+  flex: 1;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Metrics */
+.card-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.metric {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 9px 10px;
+  text-align: center;
+}
+.metric-v {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  font-family: 'DM Mono', monospace;
+  line-height: 1;
+}
+.metric-l {
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 3px;
+  letter-spacing: 0.03em;
+}
+
+/* Insight */
+.card-insight {
+  background: rgba(2,24,89,0.04);
+  border-left: 2px solid var(--navy);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: var(--teal);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Tags */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.tag {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  color: var(--slate);
+  background: var(--bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* Card footer */
+.card-footer {
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  background: var(--card);
+}
+.card-btn {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all .18s;
+}
+.card-btn-primary {
+  background: var(--navy);
+  color: var(--white);
+}
+.card-btn-primary:hover { background: var(--teal); }
+.card-btn-secondary {
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.card-btn-secondary:hover { color: var(--text); border-color: rgba(2,24,89,0.2); }
+
+/* ── SKILLS SECTION ──────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 5rem;
+}
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.skill-cat {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--slate);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.skill-tag {
+  font-size: 10.5px;
+  background: var(--bg);
+  color: var(--muted);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── CONTACT ─────────────────────────────────────────────────────── */
+.contact-bar {
+  background: var(--night);
+  border-radius: 14px;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.contact-left h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.contact-left p {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.5;
+}
+.contact-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.contact-link {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all .18s;
+}
+.contact-link:hover { background: rgba(255,255,255,0.13); color: var(--white); }
+
+/* ── FOOTER ─────────────────────────────────────────────────────── */
+footer {
+  background: var(--night);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 2rem;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.03em;
+}
+footer span { color: rgba(255,255,255,0.4); }
+
+/* ── ANIMATIONS ─────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .5s ease both; }
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .3s; }
+
+@media (max-width: 640px) {
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero h1 { font-size: 1.8rem; }
+  .contact-bar { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">AIM <span>Analytics & Intelligence for Management</span></div>
+    <nav class="header-links">
+      <a href="https://linkedin.com/in/gonzalo-dalmasso-486094206" target="_blank">LinkedIn</a>
+      <a href="https://github.com/GonDss7" target="_blank">GitHub</a>
+      <a href="mailto:gonzalodalmasso7@hotmail.com">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Portfolio · Data & Business Analyst</div>
+  <h1 class="fade-up">Gonzalo Dalmasso Müller<br><em>Análisis que mueve decisiones</em></h1>
+  <p class="hero-sub fade-up delay-1">Business & Data Analyst. Transformo datos en claridad para PyMEs y empresas — sin tecnicismos, sin suposiciones.</p>
+  <div class="hero-pills fade-up delay-2">
+    <span class="pill">Power BI</span>
+    <span class="pill">Python</span>
+    <span class="pill">SQL</span>
+    <span class="pill">Tableau</span>
+    <span class="pill">Excel Advanced</span>
+    <span class="pill">DAX</span>
+    <span class="pill">ETL</span>
+    <span class="pill">MicroStrategy</span>
+  </div>
+  <div class="hero-cta fade-up delay-3">
+    <a href="mailto:gonzalodalmasso7@hotmail.com" class="btn-primary">Contactar</a>
+    <a href="https://linkedin.com/in/gonzalo-dalmasso-486094206" target="_blank" class="btn-ghost">Ver LinkedIn</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-n">30+</div>
+      <div class="stat-l">Dashboards BI</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">500K+</div>
+      <div class="stat-l">Filas procesadas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">3</div>
+      <div class="stat-l">Proyectos publicados</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">−60%</div>
+      <div class="stat-l">Reducción trabajo manual</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- PROJECTS -->
+  <p class="section-label">Proyectos de portfolio</p>
+  <div class="projects-grid">
+
+    <!-- PROYECTO 1 — E-COMMERCE GENERAL -->
+    <div class="project-card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(2,24,89,0.08);">🛒</div>
+        <div class="card-badges">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-navy">Financiero</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">E-Commerce Analytics 2025</h3>
+        <p class="card-desc">Sistema de análisis completo para retail online y físico. Dashboard comercial + financiero con cashflow, IVA, cuotas y rentabilidad por canal.</p>
+        <div class="card-metrics">
+          <div class="metric">
+            <div class="metric-v">100K</div>
+            <div class="metric-l">Transacciones</div>
+          </div>
+          <div class="metric">
+            <div class="metric-v">$65.2B</div>
+            <div class="metric-l">Ingresos</div>
+          </div>
+          <div class="metric">
+            <div class="metric-v">9</div>
+            <div class="metric-l">Tablas</div>
+          </div>
+        </div>
+        <div class="card-insight">Cuotas por cobrar en 2026: $7.3B — visualizadas por mes para gestión proactiva de cobranzas.</div>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://gondss7.github.io/ecommerce-analytics/" target="_blank" class="card-btn card-btn-primary">Ver dashboard →</a>
+        <a href="https://github.com/GonDss7/ecommerce-analytics" target="_blank" class="card-btn card-btn-secondary">GitHub</a>
+      </div>
+    </div>
+
+    <!-- PROYECTO 2 — ELECTRÓNICA -->
+    <div class="project-card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(184,114,0,0.08);">📱</div>
+        <div class="card-badges">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-amber">Importador</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Electrónica & Tecnología 2025</h3>
+        <p class="card-desc">Importadora con 6 sucursales físicas y canales online. Tipo de cambio flotante diario, aranceles discriminados y análisis de riesgo cambiario en cuotas.</p>
+        <div class="card-metrics">
+          <div class="metric">
+            <div class="metric-v">60K</div>
+            <div class="metric-l">Transacciones</div>
+          </div>
+          <div class="metric">
+            <div class="metric-v">$57.4B</div>
+            <div class="metric-l">Ingresos</div>
+          </div>
+          <div class="metric">
+            <div class="metric-v">12</div>
+            <div class="metric-l">Tablas</div>
+          </div>
+        </div>
+        <div class="card-insight">$13.1B en cuotas por cobrar en ARS 2026 vs costos de reposición en USD — riesgo cambiario cuantificado.</div>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="tag">TC flotante</span>
+          <span class="tag">Chart.js</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://gondss7.github.io/Electronica2025/" target="_blank" class="card-btn card-btn-primary">Ver dashboard →</a>
+        <a href="https://github.com/GonDss7/Electronica2025" target="_blank" class="card-btn card-btn-secondary">GitHub</a>
+      </div>
+    </div>
+
+    <!-- PROYECTO 3 — FINANCIERO -->
+    <div class="project-card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(26,158,112,0.08);">💼</div>
+        <div class="card-badges">
+          <span class="badge badge-green">Live</span>
+          <span class="badge badge-blue">Servicios</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Financial Analytics 2025</h3>
+        <p class="card-desc">Análisis financiero integral para empresa de servicios y distribución. P&L detallado, cashflow, posición IVA, rentabilidad por cliente y proyección 2026.</p>
+        <div class="card-metrics">
+          <div class="metric">
+            <div class="metric-v">$284M</div>
+            <div class="metric-l">Ingresos netos</div>
+          </div>
+          <div class="metric">
+            <div class="metric-v">62.3%</div>
+            <div class="metric-l">Margen bruto</div>
+          </div>
+          <div class="metric">
+            <div class="metric-v">52</div>
+            <div class="metric-l">Clientes</div>
+          </div>
+        </div>
+        <div class="card-insight">DSO de 47 días vs benchmark 35 — capital de trabajo inmovilizado evitable de ~$12M identificado y cuantificado.</div>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">P&L</span>
+          <span class="tag">Cashflow</span>
+          <span class="tag">Chart.js</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://gondss7.github.io/financial-analytics-2025/" target="_blank" class="card-btn card-btn-primary">Ver dashboard →</a>
+        <a href="https://github.com/GonDss7/financial-analytics-2025" target="_blank" class="card-btn card-btn-secondary">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SKILLS -->
+  <p class="section-label">Stack técnico</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Business Intelligence</div>
+      <div class="skill-items">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Looker Studio</span>
+        <span class="skill-tag">MicroStrategy</span>
+        <span class="skill-tag">DAX</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Lenguajes & Datos</div>
+      <div class="skill-items">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">pandas</span>
+        <span class="skill-tag">numpy</span>
+        <span class="skill-tag">scikit-learn</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Excel & Reporting</div>
+      <div class="skill-items">
+        <span class="skill-tag">Excel Avanzado</span>
+        <span class="skill-tag">Power Query</span>
+        <span class="skill-tag">Tablas dinámicas</span>
+        <span class="skill-tag">DAX</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Análisis Financiero</div>
+      <div class="skill-items">
+        <span class="skill-tag">P&L</span>
+        <span class="skill-tag">Cashflow</span>
+        <span class="skill-tag">IVA / AFIP</span>
+        <span class="skill-tag">CMV / Márgenes</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">E-Commerce</div>
+      <div class="skill-items">
+        <span class="skill-tag">MercadoLibre</span>
+        <span class="skill-tag">Tiendanube</span>
+        <span class="skill-tag">Multi-canal</span>
+        <span class="skill-tag">Marketplace</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Metodologías</div>
+      <div class="skill-items">
+        <span class="skill-tag">ETL</span>
+        <span class="skill-tag">Dim Modeling</span>
+        <span class="skill-tag">Agile</span>
+        <span class="skill-tag">Data-Driven</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-bar">
+    <div class="contact-left">
+      <h3>¿Trabajamos juntos?</h3>
+      <p>Disponible para posiciones de BI / Data Analyst y proyectos de consultoría a través de AIM.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:gonzalodalmasso7@hotmail.com" class="contact-link">✉ gonzalodalmasso7@hotmail.com</a>
+      <a href="https://linkedin.com/in/gonzalo-dalmasso-486094206" target="_blank" class="contact-link">LinkedIn →</a>
+      <a href="https://github.com/GonDss7" target="_blank" class="contact-link">GitHub →</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Gonzalo Dalmasso Müller</span> · AIM Analytics · 2025 · Hecho con datos y criterio
+</footer>
+
+</body>
+</html>
