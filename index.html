@@ -34,7 +34,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── HEADER ─────────────────────────────────────────────────────── */
 .header {
   background: var(--night);
   padding: 0;
@@ -79,7 +78,6 @@ body {
 }
 .header-links a:hover { color: rgba(255,255,255,0.9); }
 
-/* ── HERO ────────────────────────────────────────────────────────── */
 .hero {
   background: var(--night);
   padding: 5rem 2rem 4rem;
@@ -179,7 +177,6 @@ body {
 }
 .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
 
-/* ── STATS BAR ───────────────────────────────────────────────────── */
 .stats-bar {
   background: var(--navy);
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -213,7 +210,6 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* ── MAIN ────────────────────────────────────────────────────────── */
 .main {
   max-width: 1100px;
   margin: 0 auto;
@@ -237,7 +233,6 @@ body {
   background: var(--border);
 }
 
-/* ── PROJECT CARDS ───────────────────────────────────────────────── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -293,6 +288,7 @@ body {
 .badge-blue  { background: rgba(46,117,182,0.12); color: var(--blue); }
 .badge-amber { background: rgba(184,114,0,0.12);  color: var(--amber); }
 .badge-navy  { background: rgba(2,24,89,0.08);    color: var(--navy); }
+.badge-teal  { background: rgba(2,48,89,0.1);     color: var(--teal); }
 
 .card-body {
   padding: 14px 20px 0;
@@ -311,8 +307,6 @@ body {
   line-height: 1.6;
   margin-bottom: 14px;
 }
-
-/* Metrics */
 .card-metrics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -338,8 +332,6 @@ body {
   margin-top: 3px;
   letter-spacing: 0.03em;
 }
-
-/* Insight */
 .card-insight {
   background: rgba(2,24,89,0.04);
   border-left: 2px solid var(--navy);
@@ -351,8 +343,6 @@ body {
   line-height: 1.5;
   font-style: italic;
 }
-
-/* Tags */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -368,14 +358,13 @@ body {
   border-radius: 4px;
   border: 1px solid var(--border);
 }
-
-/* Card footer */
 .card-footer {
   padding: 14px 20px 18px;
   border-top: 1px solid var(--border);
   display: flex;
   gap: 8px;
   background: var(--card);
+  flex-wrap: wrap;
 }
 .card-btn {
   flex: 1;
@@ -386,6 +375,7 @@ body {
   font-size: 12px;
   font-weight: 500;
   transition: all .18s;
+  min-width: 80px;
 }
 .card-btn-primary {
   background: var(--navy);
@@ -399,7 +389,6 @@ body {
 }
 .card-btn-secondary:hover { color: var(--text); border-color: rgba(2,24,89,0.2); }
 
-/* ── SKILLS SECTION ──────────────────────────────────────────────── */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -434,7 +423,6 @@ body {
   font-family: 'DM Mono', monospace;
 }
 
-/* ── CONTACT ─────────────────────────────────────────────────────── */
 .contact-bar {
   background: var(--night);
   border-radius: 14px;
@@ -474,7 +462,6 @@ body {
 }
 .contact-link:hover { background: rgba(255,255,255,0.13); color: var(--white); }
 
-/* ── FOOTER ─────────────────────────────────────────────────────── */
 footer {
   background: var(--night);
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -486,7 +473,6 @@ footer {
 }
 footer span { color: rgba(255,255,255,0.4); }
 
-/* ── ANIMATIONS ─────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -506,7 +492,6 @@ footer span { color: rgba(255,255,255,0.4); }
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <div class="logo">AIM <span>Analytics & Intelligence for Management</span></div>
@@ -518,7 +503,6 @@ footer span { color: rgba(255,255,255,0.4); }
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-badge">Portfolio · Data & Business Analyst</div>
   <h1 class="fade-up">Gonzalo Dalmasso Müller<br><em>Decisiones basadas en datos</em></h1>
@@ -532,6 +516,8 @@ footer span { color: rgba(255,255,255,0.4); }
     <span class="pill">DAX</span>
     <span class="pill">ETL</span>
     <span class="pill">MicroStrategy</span>
+    <span class="pill">Financial Modeling</span>
+    <span class="pill">3-Statement Model</span>
   </div>
   <div class="hero-cta fade-up delay-3">
     <a href="mailto:gonzalodalmasso7@hotmail.com" class="btn-primary">Contactar</a>
@@ -539,7 +525,6 @@ footer span { color: rgba(255,255,255,0.4); }
   </div>
 </section>
 
-<!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat">
@@ -551,24 +536,22 @@ footer span { color: rgba(255,255,255,0.4); }
       <div class="stat-l">Filas procesadas</div>
     </div>
     <div class="stat">
-      <div class="stat-n">3</div>
+      <div class="stat-n">5</div>
       <div class="stat-l">Proyectos publicados</div>
     </div>
     <div class="stat">
-      <div class="stat-n">−60%</div>
-      <div class="stat-l">Reducción trabajo manual</div>
+      <div class="stat-n">1.000+</div>
+      <div class="stat-l">Fórmulas enlazadas</div>
     </div>
   </div>
 </div>
 
-<!-- MAIN -->
 <main class="main">
 
-  <!-- PROJECTS -->
   <p class="section-label">Proyectos de portfolio</p>
   <div class="projects-grid">
 
-    <!-- PROYECTO 1 — E-COMMERCE GENERAL -->
+    <!-- PROYECTO 1 — E-COMMERCE -->
     <div class="project-card">
       <div class="card-header">
         <div class="card-icon" style="background:rgba(2,24,89,0.08);">🛒</div>
@@ -581,25 +564,13 @@ footer span { color: rgba(255,255,255,0.4); }
         <h3 class="card-title">E-Commerce Analytics 2025</h3>
         <p class="card-desc">Sistema de análisis completo para retail online y físico. Dashboard comercial + financiero con cashflow, IVA, cuotas y rentabilidad por canal.</p>
         <div class="card-metrics">
-          <div class="metric">
-            <div class="metric-v">100K</div>
-            <div class="metric-l">Transacciones</div>
-          </div>
-          <div class="metric">
-            <div class="metric-v">$65.2B</div>
-            <div class="metric-l">Ingresos</div>
-          </div>
-          <div class="metric">
-            <div class="metric-v">9</div>
-            <div class="metric-l">Tablas</div>
-          </div>
+          <div class="metric"><div class="metric-v">100K</div><div class="metric-l">Transacciones</div></div>
+          <div class="metric"><div class="metric-v">$65.2B</div><div class="metric-l">Ingresos</div></div>
+          <div class="metric"><div class="metric-v">9</div><div class="metric-l">Tablas</div></div>
         </div>
         <div class="card-insight">Cuotas por cobrar en 2026: $7.3B — visualizadas por mes para gestión proactiva de cobranzas.</div>
         <div class="card-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Excel</span>
-          <span class="tag">Chart.js</span>
-          <span class="tag">HTML/CSS</span>
+          <span class="tag">Python</span><span class="tag">Excel</span><span class="tag">Chart.js</span><span class="tag">HTML/CSS</span>
         </div>
       </div>
       <div class="card-footer">
@@ -621,25 +592,13 @@ footer span { color: rgba(255,255,255,0.4); }
         <h3 class="card-title">Electrónica & Tecnología 2025</h3>
         <p class="card-desc">Importadora con 6 sucursales físicas y canales online. Tipo de cambio flotante diario, aranceles discriminados y análisis de riesgo cambiario en cuotas.</p>
         <div class="card-metrics">
-          <div class="metric">
-            <div class="metric-v">60K</div>
-            <div class="metric-l">Transacciones</div>
-          </div>
-          <div class="metric">
-            <div class="metric-v">$57.4B</div>
-            <div class="metric-l">Ingresos</div>
-          </div>
-          <div class="metric">
-            <div class="metric-v">12</div>
-            <div class="metric-l">Tablas</div>
-          </div>
+          <div class="metric"><div class="metric-v">60K</div><div class="metric-l">Transacciones</div></div>
+          <div class="metric"><div class="metric-v">$57.4B</div><div class="metric-l">Ingresos</div></div>
+          <div class="metric"><div class="metric-v">12</div><div class="metric-l">Tablas</div></div>
         </div>
         <div class="card-insight">$13.1B en cuotas por cobrar en ARS 2026 vs costos de reposición en USD — riesgo cambiario cuantificado.</div>
         <div class="card-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Excel</span>
-          <span class="tag">TC flotante</span>
-          <span class="tag">Chart.js</span>
+          <span class="tag">Python</span><span class="tag">Excel</span><span class="tag">TC flotante</span><span class="tag">Chart.js</span>
         </div>
       </div>
       <div class="card-footer">
@@ -648,7 +607,7 @@ footer span { color: rgba(255,255,255,0.4); }
       </div>
     </div>
 
-    <!-- PROYECTO 3 — FINANCIERO -->
+    <!-- PROYECTO 3 — FINANCIAL ANALYTICS -->
     <div class="project-card">
       <div class="card-header">
         <div class="card-icon" style="background:rgba(26,158,112,0.08);">💼</div>
@@ -661,30 +620,74 @@ footer span { color: rgba(255,255,255,0.4); }
         <h3 class="card-title">Financial Analytics 2025</h3>
         <p class="card-desc">Análisis financiero integral para empresa de servicios y distribución. P&L detallado, cashflow, posición IVA, rentabilidad por cliente y proyección 2026.</p>
         <div class="card-metrics">
-          <div class="metric">
-            <div class="metric-v">$284M</div>
-            <div class="metric-l">Ingresos netos</div>
-          </div>
-          <div class="metric">
-            <div class="metric-v">62.3%</div>
-            <div class="metric-l">Margen bruto</div>
-          </div>
-          <div class="metric">
-            <div class="metric-v">52</div>
-            <div class="metric-l">Clientes</div>
-          </div>
+          <div class="metric"><div class="metric-v">$284M</div><div class="metric-l">Ingresos netos</div></div>
+          <div class="metric"><div class="metric-v">62.3%</div><div class="metric-l">Margen bruto</div></div>
+          <div class="metric"><div class="metric-v">52</div><div class="metric-l">Clientes</div></div>
         </div>
         <div class="card-insight">DSO de 47 días vs benchmark 35 — capital de trabajo inmovilizado evitable de ~$12M identificado y cuantificado.</div>
         <div class="card-tags">
-          <span class="tag">Python</span>
-          <span class="tag">P&L</span>
-          <span class="tag">Cashflow</span>
-          <span class="tag">Chart.js</span>
+          <span class="tag">Python</span><span class="tag">P&L</span><span class="tag">Cashflow</span><span class="tag">Chart.js</span>
         </div>
       </div>
       <div class="card-footer">
         <a href="https://gondss7.github.io/financial-analytics-2025/" target="_blank" class="card-btn card-btn-primary">Ver dashboard →</a>
         <a href="https://github.com/GonDss7/financial-analytics-2025" target="_blank" class="card-btn card-btn-secondary">GitHub</a>
+      </div>
+    </div>
+
+    <!-- PROYECTO 4 — KHC FINANCIAL MODEL -->
+    <div class="project-card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(2,48,89,0.1);">📊</div>
+        <div class="card-badges">
+          <span class="badge badge-teal">CFI Standard</span>
+          <span class="badge badge-navy">Wall Street</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">KHC — 3-Statement Financial Model</h3>
+        <p class="card-desc">Modelo financiero integrado de The Kraft Heinz Company (NASDAQ: KHC). P&L, Balance Sheet y Cash Flow proyectados a 5 años. Datos extraídos exclusivamente del 10-K FY2025 (SEC EDGAR).</p>
+        <div class="card-metrics">
+          <div class="metric"><div class="metric-v">1.000+</div><div class="metric-l">Fórmulas</div></div>
+          <div class="metric"><div class="metric-v">10</div><div class="metric-l">Módulos</div></div>
+          <div class="metric"><div class="metric-v">FY2030E</div><div class="metric-l">Proyección</div></div>
+        </div>
+        <div class="card-insight">Pérdida neta de $(5,848)mm con caja operativa de +$4,462mm en FY2025. La diferencia: $9.3B en impairments no cash. El negocio genera caja — el daño fue contable.</div>
+        <div class="card-tags">
+          <span class="tag">3-Statement</span><span class="tag">10-K SEC</span><span class="tag">NWC · DSO/DIO/DPO</span><span class="tag">Debt Schedule</span><span class="tag">US GAAP</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/GonDss7/financial-modeling" target="_blank" class="card-btn card-btn-primary">Ver en GitHub →</a>
+        <a href="https://github.com/GonDss7/financial-modeling/raw/main/KHC_Gonzalo_Final.xlsx" target="_blank" class="card-btn card-btn-secondary">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <!-- PROYECTO 5 — LOMA NEGRA FINANCIAL MODEL -->
+    <div class="project-card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(184,114,0,0.1);">🏗️</div>
+        <div class="card-badges">
+          <span class="badge badge-amber">IAS 29</span>
+          <span class="badge badge-navy">BCBA</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Loma Negra — 3-Statement Financial Model</h3>
+        <p class="card-desc">Modelo financiero de Loma Negra S.A. (BCBA: LOMA), mayor cementera de Argentina. 5 segmentos operativos con manejo de contabilidad hiperinflacionaria IAS 29 y RECPAM.</p>
+        <div class="card-metrics">
+          <div class="metric"><div class="metric-v">1.048</div><div class="metric-l">Fórmulas</div></div>
+          <div class="metric"><div class="metric-v">5</div><div class="metric-l">Segmentos</div></div>
+          <div class="metric"><div class="metric-v">FY2030E</div><div class="metric-l">Proyección</div></div>
+        </div>
+        <div class="card-insight">NI FY2024 de ARS 202B impulsado por RECPAM de ARS 345B — no por operaciones. El EBIT normalizado era solo ARS 146B. Proyecciones eliminan efectos monetarios no recurrentes.</div>
+        <div class="card-tags">
+          <span class="tag">3-Statement</span><span class="tag">NIIF · IAS 29</span><span class="tag">RECPAM</span><span class="tag">ARS hiperinflación</span><span class="tag">BCBA</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="https://github.com/GonDss7/financial-modeling" target="_blank" class="card-btn card-btn-primary">Ver en GitHub →</a>
+        <a href="https://github.com/GonDss7/financial-modeling/raw/main/Loma_Negra_FM_Final.xlsx" target="_blank" class="card-btn card-btn-secondary">⬇ Descargar</a>
       </div>
     </div>
 
@@ -720,6 +723,26 @@ footer span { color: rgba(255,255,255,0.4); }
         <span class="skill-tag">Power Query</span>
         <span class="skill-tag">Tablas dinámicas</span>
         <span class="skill-tag">DAX</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Modelado Financiero</div>
+      <div class="skill-items">
+        <span class="skill-tag">3-Statement Model</span>
+        <span class="skill-tag">P&L · BS · CF</span>
+        <span class="skill-tag">NWC DSO/DIO/DPO</span>
+        <span class="skill-tag">Debt Schedule</span>
+        <span class="skill-tag">CapEx/D&A</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Riesgo & Finanzas</div>
+      <div class="skill-items">
+        <span class="skill-tag">PD · LGD · EAD</span>
+        <span class="skill-tag">IFRS 9 · Basel III</span>
+        <span class="skill-tag">IAS 29</span>
+        <span class="skill-tag">US GAAP · NIIF</span>
+        <span class="skill-tag">Expected Loss</span>
       </div>
     </div>
     <div class="skill-card">
